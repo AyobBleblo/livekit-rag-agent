@@ -1,0 +1,121 @@
+[
+  {
+    "id": "dr001",
+    "name": "د. أمينة البكوش",
+    "gender": "female",
+    "specialty": "تغذية علاجية",
+    "sub_specialty": "تغذية الأطفال وإدارة الوزن",
+    "experience_years": 8,
+    "bio": "أخصائية تغذية علاجية، حاصلة على بكالوريوس التغذية وماجستير في التغذية السريرية. خبرة 8 سنوات في علاج السمنة وأمراض التغذية.",
+    "languages": ["العربية", "الإنجليزية"],
+    "schedule": {
+      "days": ["السبت", "الاثنين", "الأربعاء"],
+      "start_time": "10:00",
+      "end_time": "16:00"
+    },
+    "consultation_price_LYD": 80,
+    "accepts_new_patients": true
+  },
+  {
+    "id": "dr002",
+    "name": "د. خالد المنتصر",
+    "gender": "male",
+    "specialty": "طب تجميلي",
+    "sub_specialty": "حقن البوتوكس والفيلر",
+    "experience_years": 12,
+    "bio": "طبيب تجميل متخصص في إجراءات التجميل غير الجراحية، حاصل على زمالة في الطب التجميلي من مصر.",
+    "languages": ["العربية"],
+    "schedule": {
+      "days": ["الأحد", "الثلاثاء", "الخميس"],
+      "start_time": "11:00",
+      "end_time": "17:00"
+    },
+    "consultation_price_LYD": 120,
+    "accepts_new_patients": true
+  },
+  {
+    "id": "dr003",
+    "name": "د. سارة القبلاوي",
+    "gender": "female",
+    "specialty": "ليزر طبي",
+    "sub_specialty": "إزالة الشعر بالليزر وعلاج البشرة",
+    "experience_years": 6,
+    "bio": "متخصصة في علاجات الليزر الطبي وعناية البشرة، حاصلة على تدريب متخصص في ألمانيا.",
+    "languages": ["العربية", "الإنجليزية", "الألمانية"],
+    "schedule": {
+      "days": ["السبت", "الأحد", "الثلاثاء"],
+      "start_time": "09:00",
+      "end_time": "14:00"
+    },
+    "consultation_price_LYD": 100,
+    "accepts_new_patients": true
+  },
+  {
+    "id": "dr004",
+    "name": "د. محمد الزروق",
+    "gender": "male",
+    "specialty": "تغذية رياضية",
+    "sub_specialty": "تغذية الرياضيين وبناء العضلات",
+    "experience_years": 5,
+    "bio": "أخصائي تغذية رياضية، متخصص في وضع برامج غذائية للرياضيين وتحسين الأداء البدني.",
+    "languages": ["العربية"],
+    "schedule": {
+      "days": ["الاثنين", "الأربعاء", "الخميس"],
+      "start_time": "14:00",
+      "end_time": "19:00"
+    },
+    "consultation_price_LYD": 70,
+    "accepts_new_patients": true
+  },
+  {
+    "id": "dr005",
+    "name": "د. ليلى الفيتوري",
+    "gender": "female",
+    "specialty": "طب تجميلي",
+    "sub_specialty": "خيوط الرفع وعلاجات مكافحة الشيخوخة",
+    "experience_years": 10,
+    "bio": "طبيبة تجميل متخصصة في إجراءات مكافحة الشيخوخة، حاصلة على شهادات دولية في الطب التجميلي.",
+    "languages": ["العربية", "الإنجليزية", "الفرنسية"],
+    "schedule": {
+      "days": ["الأحد", "الاثنين", "الأربعاء"],
+      "start_time": "10:00",
+      "end_time": "15:00"
+    },
+    "consultation_price_LYD": 150,
+    "accepts_new_patients": false
+  },
+  {
+    "id": "dr006",
+    "name": "د. عمر بن سعيد",
+    "gender": "male",
+    "specialty": "تغذية علاجية",
+    "sub_specialty": "أمراض السكري والكلى",
+    "experience_years": 14,
+    "bio": "أخصائي تغذية علاجية ذو خبرة واسعة في التغذية لمرضى السكري وأمراض الكلى، حاصل على دكتوراه في التغذية السريرية.",
+    "languages": ["العربية", "الإنجليزية"],
+    "schedule": {
+      "days": ["السبت", "الثلاثاء", "الخميس"],
+      "start_time": "09:00",
+      "end_time": "13:00"
+    },
+    "consultation_price_LYD": 90,
+    "accepts_new_patients": true
+  },
+  {
+    "id": "dr007",
+    "name": "د. نور العبيدي",
+    "gender": "female",
+    "specialty": "عناية بالبشرة",
+    "sub_specialty": "علاج حب الشباب وتفتيح البشرة",
+    "experience_years": 7,
+    "bio": "متخصصة في الأمراض الجلدية التجميلية وعلاجات البشرة، حاصلة على بورد عربي في الأمراض الجلدية.",
+    "languages": ["العربية"],
+    "schedule": {
+      "days": ["الأحد", "الاثنين", "الأربعاء", "الخميس"],
+      "start_time": "11:00",
+      "end_time": "17:00"
+    },
+    "consultation_price_LYD": 85,
+    "accepts_new_patients": true
+  }
+]

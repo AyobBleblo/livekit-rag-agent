@@ -1,0 +1,14 @@
+{
+  "booking_methods": ["هاتف", "واتساب"],
+  "advance_booking_hours": 24,
+  "cancellation_policy": {
+    "free_cancellation_before_hours": 12,
+    "late_cancellation_fee_LYD": 20,
+    "no_show_fee_LYD": 30
+  },
+  "payment_methods": ["نقداً عند الزيارة", "تحويل بنكي"],
+  "deposit_required": false,
+  "new_patient_instructions": "يرجى الحضور قبل 10 دقائق من الموعد وإحضار أي تقارير طبية سابقة إن وجدت.",
+  "insurance_accepted": false,
+  "languages_supported": ["العربية", "الإنجليزية"]
+}
