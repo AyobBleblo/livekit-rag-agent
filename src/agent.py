@@ -1,13 +1,12 @@
 """
-agent.py — المساعد الصوتي لعيادة النور للتغذية والتجميل.
-يستخدم LiveKit Agents مع Google Gemini و RAG من ChromaDB.
+agent.py — Voice assistant for Al-Noor Clinic for Nutrition and Aesthetics.
+Uses LiveKit Agents with Google Gemini and RAG from ChromaDB.
 """
 
 from dotenv import load_dotenv
 from livekit.agents import Agent, AgentSession, cli, WorkerOptions
 from livekit.plugins import google
 from rag_retriever import retrieve
-import asyncio
 
 load_dotenv()
 
@@ -18,21 +17,18 @@ class ClinicKnowledgeBase(llm.Toolset):
     def __init__(self):
         super().__init__(id="clinic_db")
 
-    @llm.function_tool(description="ابحث في قاعدة بيانات العيادة للحصول على معلومات دقيقة عن الأطباء، الخدمات، المواعيد، أو الأسعار.")
+    @llm.function_tool(description="Search the clinic database to get accurate information about doctors, services, appointments, or prices.")
     async def search_clinic_info(self, query: str):
         print(f"[ClinicKnowledgeBase] Searching for: {query}")
         return retrieve(query)
 
 class VoiceAssistant(Agent):
-    def __init__(self, initial_context: str) -> None:
-        instructions = f"""أنت مساعد صوتي لعيادة النور للتغذية والتجميل في بنغازي.
-أجب فقط بناءً على المعلومات المتوفرة لك. ولا تخترع معلومات من عندك.
-إذا سألك المريض عن الأطباء أو الخدمات أو الأسعار، يجب عليك استخدام أداة (search_clinic_info) للبحث في قاعدة البيانات قبل الإجابة.
-إذا لم تجد الإجابة في معلوماتك، قل للمريض أن يتواصل مباشرة مع العيادة.
-تكلم بالعربية دائماً وبلهجة ودودة ومحترفة.
-
-=== معلومات أساسية عن العيادة ===
-{initial_context}
+    def __init__(self) -> None:
+        instructions = """You are a voice assistant for Al-Noor Clinic for Nutrition and Aesthetics in Benghazi.
+Answer only based on the information available to you. Do not make up information.
+If the patient asks you about doctors, services, prices, working hours, or any information about the clinic, you must use the tool (search_clinic_info) to search the database before answering.
+If you do not find the answer in your information, tell the patient to contact the clinic directly.
+Always speak in Arabic and in a friendly and professional tone.
 """
         super().__init__(
             instructions=instructions,
@@ -47,11 +43,8 @@ class VoiceAssistant(Agent):
 async def entrypoint(ctx):
     await ctx.connect()
     
-    # Load basic clinic info for the system prompt
-    initial_context = retrieve("معلومات العيادة العامة ومواعيد العمل")
-    
     session = AgentSession()
-    await session.start(agent=VoiceAssistant(initial_context), room=ctx.room)
+    await session.start(agent=VoiceAssistant(), room=ctx.room)
 
 if __name__ == "__main__":
     cli.run_app(WorkerOptions(entrypoint_fnc=entrypoint))

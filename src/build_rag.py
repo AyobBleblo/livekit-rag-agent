@@ -1,6 +1,6 @@
 """
-build_rag.py — يقرأ ملفات JSON من rag_data/ ويبني قاعدة بيانات ChromaDB مع embeddings.
-شغّل هذا الملف أولاً قبل تشغيل agent.py.
+build_rag.py — Reads JSON files from rag_data/ and builds a ChromaDB database with embeddings.
+Run this file first before running agent.py.
 """
 
 import json
@@ -15,7 +15,7 @@ load_dotenv()
 
 api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
 if not api_key:
-    print("[ERROR] لم يتم العثور على GEMINI_API_KEY أو GOOGLE_API_KEY في ملف .env")
+    print("[ERROR] GEMINI_API_KEY or GOOGLE_API_KEY was not found in the .env file")
     sys.exit(1)
 
 client_genai = genai.Client(api_key=api_key)
@@ -120,7 +120,7 @@ def main():
     # Validate RAG data files exist
     missing = [f for f in LOADERS if not (RAG_DIR / f).exists()]
     if missing:
-        print(f"[ERROR] ملفات ناقصة في {RAG_DIR}/: {', '.join(missing)}")
+        print(f"[ERROR] Missing files in {RAG_DIR}/: {', '.join(missing)}")
         sys.exit(1)
 
     # Build chunks from all JSON files

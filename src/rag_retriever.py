@@ -1,6 +1,6 @@
 """
-rag_retriever.py — يسترجع أقرب الـ chunks من ChromaDB بناءً على استعلام المستخدم.
-يُستخدم من agent.py أثناء المحادثة الصوتية.
+rag_retriever.py — Retrieves the closest chunks from ChromaDB based on the user's query.
+Used by agent.py during the voice conversation.
 """
 
 import os
@@ -11,18 +11,22 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
-if not api_key:
-    raise RuntimeError("[ERROR] GEMINI_API_KEY or GOOGLE_API_KEY not found in .env")
-
-_genai_client = genai.Client(api_key=api_key)
-
 CHROMA_DIR = Path("chroma_db")
 
-# Lazy-load the collection so the module can be imported
-# even before build_rag.py has created the database.
+# Lazy-load everything so importing this module is instant.
+_genai_client = None
 _chroma_client = None
 _collection = None
+
+
+def _get_genai_client():
+    global _genai_client
+    if _genai_client is None:
+        api_key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+        if not api_key:
+            raise RuntimeError("[ERROR] GEMINI_API_KEY or GOOGLE_API_KEY not found in .env")
+        _genai_client = genai.Client(api_key=api_key)
+    return _genai_client
 
 
 def _get_collection():
@@ -39,7 +43,7 @@ def _get_collection():
 
 def retrieve(query: str, n_results: int = 3) -> str:
     """Embed the query and return the top-n matching chunks as a single string."""
-    response = _genai_client.models.embed_content(
+    response = _get_genai_client().models.embed_content(
         model="gemini-embedding-001",
         contents=query,
     )
